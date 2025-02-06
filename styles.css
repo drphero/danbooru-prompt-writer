@@ -1,0 +1,434 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+/* Base Variables */
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #10b981;
+  --danger: #ef4444;
+  --background: #f0f2f5;
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --text-color: #333;
+  --border-color: #e5e7eb;
+}
+
+/* Dark Mode Overrides */
+body.dark {
+  --primary: #2b6cb0;
+  --primary-dark: #2c5282;
+  --secondary: #68d391;
+  --danger: #fc8181;
+  --background: #121212;
+  --card-bg: rgba(40, 40, 40, 0.85);
+  --text-color: #e0e0e0;
+  --border-color: #555;
+}
+
+/* Reset minimal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Geist", sans-serif;
+  background: var(--background);
+}
+
+/* Center the container with a glass effect */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.5);
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: var(--text-color);
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Dark Mode Toggle Styles */
+.dark-mode-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.dark-mode-toggle img {
+  width: 36px;
+  height: 36px;
+  /* Optionally, add a little margin if needed */
+  margin: 4px;
+}
+
+/* Transition for smooth hover effects */
+.dark-mode-toggle img,
+.wiki-icon,
+.wiki-description-icon {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Dark/light toggle icon hover effect */
+.dark-mode-toggle img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Wiki icons hover effect */
+.wiki-icon:hover,
+.wiki-description-icon:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Styles for input and suggestions */
+.prompt-input {
+  position: relative;
+}
+
+/* Tag input field styling */
+#tagInput {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: var(--text-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#tagInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+/* Prompt name input field styled the same as tagInput */
+.save-prompt-section input {
+  padding: 12px 18px;
+  font-size: 16px;
+  width: 60%;
+  max-width: 300px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: var(--text-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.save-prompt-section input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+/* Dark Mode overrides for both inputs */
+body.dark #tagInput,
+body.dark .save-prompt-section input {
+  background: #333;
+  border-color: #555;
+  color: var(--text-color);
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+}
+
+/* Dark Mode suggestions override */
+body.dark .suggestions {
+  background: #333;
+  border-color: #555;
+}
+
+.suggestion-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background: #f3f4f6;
+}
+
+/* Dark Mode suggestion item override */
+body.dark .suggestion-item {
+  color: var(--text-color);
+}
+
+body.dark .suggestion-item:hover {
+  background: #444;
+}
+
+/* Styles for tags */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.tag {
+  background: #e5e7eb;
+  border-radius: 20px;
+  padding: 0px 6px 0px 16px;
+  margin: 6px;
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tag.duplicate {
+  background: #fecaca;
+}
+
+.tag span {
+  margin-right: 8px;
+  color: var(--text-color);
+}
+
+/* Dark Mode tag override */
+body.dark .tag {
+  background: #444;
+}
+
+body.dark .tag span {
+  color: var(--text-color);
+}
+
+.tag .remove-tag {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  padding: 5px;
+  line-height: 1;
+  cursor: pointer;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+.tag .remove-tag:hover {
+  color: var(--danger);
+}
+
+/* Dark Mode remove-tag override */
+body.dark .tag .remove-tag {
+  color: #bbb;
+}
+
+body.dark .tag .remove-tag:hover {
+  color: var(--danger);
+}
+
+.tag.dragging {
+  opacity: 0.6;
+}
+
+.buttons,
+.import-export-section,
+.save-prompt-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 8px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+  font-size: 16px;
+}
+
+button:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* List of saved prompts */
+.prompt-manager ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prompt-manager li {
+  background: #fff;
+  padding: 14px 18px;
+  margin: 10px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.prompt-manager li:hover {
+  background: #f9fafb;
+}
+
+/* Dark Mode prompts list override */
+body.dark .prompt-manager li {
+  background: #222;
+  border-color: #444;
+  color: #fff;
+}
+
+body.dark .prompt-manager li:hover {
+  background: #333;
+}
+
+.prompt-manager li button {
+  margin-left: 8px;
+  background: var(--secondary);
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+
+.prompt-manager li button.delete {
+  background: var(--danger);
+}
+
+.prompt-manager li button:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the wiki icon */
+.wiki-icon {
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Modal overlay styles */
+.wiki-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal content container */
+.wiki-modal-content {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 40vw;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Modal content image */
+.wiki-modal-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Modal close button */
+.wiki-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Icon styles */
+.wiki-icon,
+.wiki-description-icon {
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Modal description text styling */
+.wiki-description-content {
+  white-space: pre-wrap;
+  color: var(--text-color);
+  font-size: 14px;
+  padding: 10px;
+  margin-top: 40px;
+}
+
+.wiki-open-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.wiki-open-button:hover {
+  background: var(--primary-dark);
+}
