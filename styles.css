@@ -228,6 +228,10 @@ body.dark .suggestion-item:hover {
   background: #fecaca;
 }
 
+body.dark .tag.duplicate {
+  background: #f68282;
+}
+
 .tag span {
   margin-right: 8px;
   color: var(--text-color);

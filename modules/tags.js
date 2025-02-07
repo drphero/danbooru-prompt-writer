@@ -1,3 +1,5 @@
+const tagsContainer = document.getElementById("tagsContainer");
+
 function createTagElement(tagText) {
   const tagElem = document.createElement("div");
   tagElem.className = "tag";
@@ -13,7 +15,7 @@ function createTagElement(tagText) {
   removeBtn.textContent = "×";
   removeBtn.addEventListener("click", () => {
     tagElem.parentElement.removeChild(tagElem);
-    updateDuplicates(tagElem.parentElement);
+    updateDuplicates(tagsContainer);
   });
   tagElem.appendChild(removeBtn);
 
