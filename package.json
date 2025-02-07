@@ -1,6 +1,6 @@
 {
   "name": "danbooru-prompt-writer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "drphero",
   "description": "A simple and efficient prompt writing assistant for Danbooru tags.",
   "license:": "Apache-2.0",
