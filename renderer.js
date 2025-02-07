@@ -26,6 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
   tags.initTagsContainer(tagsContainer);
   tags.initDragAndDrop(tagsContainer);
 
+  // Set up clear all tags button
+  const clearButton = document.getElementById("clearTagsButton");
+  if (clearButton) {
+    clearButton.addEventListener("click", tags.clearAllTags);
+  }
+
   // Load available tags for suggestions and initialize suggestion handling
   const suggestions = require("./modules/suggestions");
   suggestions.loadAvailableTags().then(() => {

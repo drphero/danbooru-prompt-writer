@@ -98,6 +98,14 @@ function initDragAndDrop(container) {
   });
 }
 
+// Function to clear all tags
+function clearAllTags() {
+  const tagsContainer = document.getElementById("tagsContainer");
+  if (tagsContainer) {
+    tagsContainer.innerHTML = "";
+  }
+}
+
 function initTagsContainer(container) {
   // (Any container‑wide initialization can be done here.)
 }
@@ -107,4 +115,5 @@ module.exports = {
   getPromptText,
   initDragAndDrop,
   initTagsContainer,
+  clearAllTags,
 };
