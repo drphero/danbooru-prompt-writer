@@ -34,6 +34,13 @@ A simple and efficient prompt writing assistant for Danbooru tags. This project 
 2. Download the appropriate version for your operating system (Windows, macOS, Linux).
 3. Extract and run the application.
 
+## To-Do
+
+[ ] Option to append saved tags\
+[ ] Tag category coloring\
+[ ] Recent and/or often used tags in search\
+[ ] Related tags and tag groups in info modal
+
 ## License
 
 This project is licensed under the [Apache-2.0 License](LICENSE).
